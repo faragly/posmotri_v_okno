@@ -1,3 +1,7 @@
+/* -------------------------------------------------------------------------- */
+/*                                    Reset                                   */
+/* -------------------------------------------------------------------------- */
+
 *,
 *::before,
 *::after {
@@ -31,6 +35,10 @@ video {
   width: 100%;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                    Core                                    */
+/* -------------------------------------------------------------------------- */
+
 .visually-hidden {
   position: absolute;
   overflow: hidden;
@@ -59,22 +67,19 @@ video {
   margin: 0 30px;
 }
 
+/* ---------------------------------- Video --------------------------------- */
+
 .result {
   align-self: flex-end;
   display: flex;
   flex-direction: column;
-  row-gap: 11px;
+  row-gap: 16px;
 }
 
 .result__video-container {
   position: relative;
   inline-size: 711px;
-}
-
-.search-form {
-  display: flex;
-  align-items: center;
-  gap: 40px;
+  block-size: 386px;
 }
 
 .result__video {
@@ -84,17 +89,22 @@ video {
   object-position: center;
 }
 
-.search-form__fieldset {
+/* ------------------------------- Search form ------------------------------ */
+
+.search-form {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  align-items: center;
+  gap: 40px;
+}
+
+.search-form__fieldset {
   border: none;
-  inline-size: 100%;
 }
 
 .search-form__fieldset-title {
   font-weight: 400;
   font-size: 18px;
+  margin-bottom: 5px;
 }
 
 .search-form__label {
@@ -115,10 +125,9 @@ video {
 }
 
 .search-form__textfield {
-  border-top: 1px solid #fff;
-  border-right: none;
-  border-bottom: 1px solid #fff;
-  border-left: none;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 1px 0;
   padding: 2px 0;
   color: currentColor;
   font-family: inherit;
@@ -126,10 +135,12 @@ video {
   font-size: inherit;
   background-color: transparent;
   inline-size: 225px;
+  block-size: 27px;
+  appearance: none;
 }
 
 .search-form__textfield::placeholder {
-  color: rgba(255, 255, 255, .7);
+  color: rgba(255, 255, 255, 0.7);
   font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
@@ -154,9 +165,10 @@ video {
 
 .search-form__pseudo-checkbox {
   display: block;
-  border: 1px solid #fff;
-  inline-size: 19px;
-  block-size: 19px;
+  outline: 1px solid #fff;
+  inline-size: 17px;
+  block-size: 17px;
+  appearance: none;
 }
 
 .search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
@@ -168,9 +180,15 @@ video {
   margin: 1px 0 0 1px;
 }
 
+.search-form__submit-button {
+  align-self: flex-end;
+}
+
+/* --------------------------------- Button --------------------------------- */
+
 .button {
   border: 1px solid #fff;
-  padding: 6px 0;
+  padding-block: 5px;
   color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 700;
@@ -198,21 +216,19 @@ video {
   outline-offset: 1px;
 }
 
-.search-form__submit-button {
-  align-self: flex-end;
-}
+/* --------------------------------- Details -------------------------------- */
 
 .content__details {
   inline-size: 100%;
 }
 
 .title {
-  padding: 0 0 26px;
+  margin-bottom: 26px;
   color: #fff;
   font-family: Oswald, sans-serif;
   font-weight: 700;
   font-size: 75px;
-  line-height: 70.5px;
+  line-height: 70px;
   text-transform: uppercase;
 }
 
@@ -222,22 +238,18 @@ video {
 
 .content__list {
   position: relative;
-  overflow-y: scroll;
   block-size: 298px;
-  -ms-overflow-style: none; /* for Internet Explorer, Edge */
-  scrollbar-width: none; /* for Firefox */
+  inline-size: 398px;
   scroll-snap-type: y mandatory;
-  display: flex;
-  flex-direction: column;
-  row-gap: 34px;
-}
-
-.content__list::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
+  overflow-y: auto;
 }
 
 .content__list-item {
   scroll-snap-align: start;
+}
+
+.content__list-item:not(:last-child) {
+  margin-bottom: 34px;
 }
 
 .content__card-link {
@@ -268,7 +280,10 @@ video {
 
 .content__video-card {
   display: flex;
-  justify-content: space-between;
+}
+
+.content__video-card-description-container {
+  flex-grow: 1;
 }
 
 .content__video-card-title {
@@ -279,7 +294,10 @@ video {
   font-size: 30px;
   line-height: 1;
   text-transform: uppercase;
-  hyphens: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 192px;
 }
 
 .content__video-card-description {
